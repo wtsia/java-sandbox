@@ -1,3 +1,0 @@
-INDEX VERSION 1.131+/home/user/sandbox/java-sandbox/.metadata/.plugins/org.eclipse.jdt.core
-2091750347.index
-1865797976.index
