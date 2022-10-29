@@ -11,6 +11,7 @@ public class RandNumGame {
 		Scanner input = new Scanner(System.in);
 		Random randGen = new Random();
 		
+		// Declared variables
 		int[] inputArray = new int[3];
 		boolean validInput = false;
 		int num1;
@@ -39,13 +40,8 @@ public class RandNumGame {
 		
 		randNum = randGen.nextInt(absVal) + inputArray[0];
 		guessOdds = 100 - oddsCalculator(guessLimit, absVal)*100;
-		System.out.println("*******************  Introduction  *********************");
-		System.out.printf("You are awarded %d guesses.\n", guessLimit);
-		System.out.printf("Assuming %d random unique guesses, your odds of getting it\n", guessLimit);
-		System.out.printf("right is: %.2f%%\n", guessOdds);
-		System.out.println("May the odds be ever in your favor.");
-		System.out.println("********************************************************");
-		System.out.printf("I am a number, between %d  and %d. What am I?\n> ", inputArray[0], inputArray[1]);
+		introduction(guessLimit, guessOdds, inputArray);
+
 		
 		while (validInput == true) {
 			guessNum = input.nextInt();
@@ -110,5 +106,21 @@ public class RandNumGame {
 			odds = odds*((range - 1)/range);
 		}
 		return odds;
+	}
+	
+	/**
+	 * 
+	 * @param guessLimit
+	 * @param guessOdds
+	 * @param array
+	 */
+	public static void introduction(int guessLimit, double guessOdds, int[] array) {
+		System.out.println("*******************  Introduction  *********************");
+		System.out.printf("You are awarded %d guesses.\n", guessLimit);
+		System.out.printf("Assuming %d random unique guesses, your odds of getting it\n", guessLimit);
+		System.out.printf("right is: %.2f%%\n", guessOdds);
+		System.out.println("May the odds be ever in your favor.");
+		System.out.println("********************************************************");
+		System.out.printf("I am a number, between %d  and %d. What am I?\n> ", array[0], array[1]);
 	}
 }
