@@ -1,3 +1,8 @@
+/**
+ * Description: 
+ * @author Winston
+ *
+ */
 import java.util.Scanner;
 import java.util.Random;
 
@@ -61,12 +66,22 @@ public class RandNumGame {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public static void welcome() {
 		System.out.println("This is a guessing game.");
 		System.out.println("enter the lower and highest values for the range:");
 		System.out.print("> ");
 	}
 	
+	/**
+	 * 
+	 * @param numin1
+	 * @param numin2
+	 * @param array
+	 * @return
+	 */
 	public static int[] numCompare(int numin1, int numin2, int[] array) {
 		if (numin1 > numin2) {
 			array[0] = numin2;
@@ -82,6 +97,12 @@ public class RandNumGame {
 		return array;
 	}
 	
+	/**
+	 * 
+	 * @param guesses
+	 * @param range
+	 * @return
+	 */
 	public static double oddsCalculator(double guesses, double range) {
 		double odds = (range-1)/range;
 		for (int i = 1; i < guesses; i++) {
