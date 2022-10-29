@@ -1,7 +1,9 @@
 /**
- * Description: 
+ * Description: A program that mimics a number guessing game. Uses the Random method from java.util.Random
+ * to create a randomly generated number generated based on time. This however also means that given time,
+ * a user may be able to deterministically ascertain the number.
  * @author Winston
- *
+ * @date 10.29.2022
  */
 import java.util.Scanner;
 import java.util.Random;
@@ -27,6 +29,7 @@ public class RandNumGame {
 		
 		welcome();
 		
+		// checks if input array is initialized to default values
 		while (validInput == false) {
 			if (inputArray[0] == 0 && inputArray[1] == 0) {
 				num1 = input.nextInt();
@@ -38,11 +41,13 @@ public class RandNumGame {
 			}
 		}
 		
+		// produces a random number based on the calculated magnitude absVal and
+		// indexes it to begin at the smaller end of the range
 		randNum = randGen.nextInt(absVal) + inputArray[0];
 		guessOdds = 100 - oddsCalculator(guessLimit, absVal)*100;
 		introduction(guessLimit, guessOdds, inputArray);
-
 		
+		// logic that checks for guess limits and maintains the game.
 		while (validInput == true) {
 			guessNum = input.nextInt();
 			guessCounter++;
@@ -63,7 +68,7 @@ public class RandNumGame {
 	}
 	
 	/**
-	 * 
+	 * Welcome method that prints out initial input
 	 */
 	public static void welcome() {
 		System.out.println("This is a guessing game.");
@@ -72,11 +77,12 @@ public class RandNumGame {
 	}
 	
 	/**
-	 * 
+	 * A method that organizes 2 input numbers into a 3 element array as well as calculates the distance between the two,
+	 * and returns the result as a filled 3 element array.
 	 * @param numin1
 	 * @param numin2
 	 * @param array
-	 * @return
+	 * @return array
 	 */
 	public static int[] numCompare(int numin1, int numin2, int[] array) {
 		if (numin1 > numin2) {
@@ -94,10 +100,10 @@ public class RandNumGame {
 	}
 	
 	/**
-	 * 
+	 * Calculates the probability of guessing 5 unique numbers
 	 * @param guesses
 	 * @param range
-	 * @return
+	 * @return odds
 	 */
 	public static double oddsCalculator(double guesses, double range) {
 		double odds = (range-1)/range;
@@ -109,7 +115,7 @@ public class RandNumGame {
 	}
 	
 	/**
-	 * 
+	 * Prints an introductory statement with information relevant for the user, and queries for guess inputs.
 	 * @param guessLimit
 	 * @param guessOdds
 	 * @param array
