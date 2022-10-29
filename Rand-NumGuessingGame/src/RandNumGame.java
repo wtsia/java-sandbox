@@ -1,13 +1,13 @@
-/**
- * Description: A program that mimics a number guessing game. Uses the Random method from java.util.Random
- * to create a randomly generated number generated based on time. This however also means that given time,
- * a user may be able to deterministically ascertain the number.
- * @author Winston
- * @date 10.29.2022
- */
 import java.util.Scanner;
 import java.util.Random;
 
+/**
+ * A program that mimics a number guessing game. Uses the Random method from java.util.Random
+ * to create a randomly generated number generated based on time. This however also means that given time,
+ * a user may be able to deterministically ascertain the number.
+ * @author Winston Tsia
+ * @date 10.29.2022
+ */
 public class RandNumGame {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
@@ -68,7 +68,7 @@ public class RandNumGame {
 	}
 	
 	/**
-	 * Welcome method that prints out initial input
+	 * Welcome method that prints out a welcome page
 	 */
 	public static void welcome() {
 		System.out.println("This is a guessing game.");
@@ -78,10 +78,11 @@ public class RandNumGame {
 	
 	/**
 	 * A method that organizes 2 input numbers into a 3 element array as well as calculates the distance between the two,
-	 * and returns the result as a filled 3 element array.
-	 * @param numin1
-	 * @param numin2
-	 * @param array
+	 * and returns the result as a filled 3 element array. If an invalid range is given, it outputs an empty array and
+	 * a statement to 'try again'.
+	 * @param numin1 first user input integer.
+	 * @param numin2 second user input integer.
+	 * @param array an empty array to store the compared values and calculation.
 	 * @return array
 	 */
 	public static int[] numCompare(int numin1, int numin2, int[] array) {
@@ -101,8 +102,8 @@ public class RandNumGame {
 	
 	/**
 	 * Calculates the probability of guessing 5 unique numbers
-	 * @param guesses
-	 * @param range
+	 * @param guesses an input guess limit.
+	 * @param range an input value that reflects the magnitude between two input numbers
 	 * @return odds
 	 */
 	public static double oddsCalculator(double guesses, double range) {
@@ -116,9 +117,9 @@ public class RandNumGame {
 	
 	/**
 	 * Prints an introductory statement with information relevant for the user, and queries for guess inputs.
-	 * @param guessLimit
-	 * @param guessOdds
-	 * @param array
+	 * @param guessLimit limit of guesses set in the program.
+	 * @param guessOdds variable used to store odds.
+	 * @param array 3 element array to store range numbers and a calculated value.
 	 */
 	public static void introduction(int guessLimit, double guessOdds, int[] array) {
 		System.out.println("*******************  Introduction  *********************");
