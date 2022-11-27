@@ -6,46 +6,9 @@
 import java.util.Scanner;
 import java.util.Random;
 
-/**
- * RandomSentenceGenerator
- *
- */
 public class RandomSentenceGenerator {
 	/**
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Scanner scnr = new Scanner(System.in);
-		StringBuilder allSentences = new StringBuilder(); 
-		
-		String[] sentenceArticles = {"a", "the"};
-		String[] sentenceNouns = {"dog", "cat", "panda", "sloth", "koala", "horse", "chihuahua"};
-		String[] sentenceVerbs = {"jumped", "skipped", "leaped", "stared"};
-		String[] sentencePrepositions = {"at", "near", "above", "toward", "over"};
-		
-		System.out.println("How many random sentences do you want?");
-		int input = scnr.nextInt();
-		// for escape feature
-		String exitString = "";
-		
-		while(!exitString.equals("exit")) {
-			if (input > 25 || input < 1) {
-				System.out.println("Please choose a number between 1 and 25");
-				input = scnr.nextInt();
-			} else {
-				for (int i=0; i<input; i++) {
-					StringBuilder sentence = generateSentence(sentenceArticles, sentenceNouns, sentenceVerbs, sentencePrepositions);
-					allSentences.append(sentence);
-				}
-				exitString = "exit";
-			}
-		}
-		System.out.println(allSentences);
-	}
-	
-	/**
-	 * 
+	 * Description of method: takes in String arrays of pre-allocated grammatical types. Iterates randomly through String arrays based on Random class and forms somewhat coherent sentences. Returns the resulting sentence.
 	 * @param sentenceArticles
 	 * @param sentenceNouns
 	 * @param sentenceVerbs
@@ -53,13 +16,12 @@ public class RandomSentenceGenerator {
 	 * @return mySentence
 	 */
 	public static StringBuilder generateSentence(String[] sentenceArticles, String[] sentenceNouns, String[] sentenceVerbs, String[] sentencePrepositions) {
-		// Article – noun – verb – preposition – article – noun.
 		String[][]sentenceType = {sentenceArticles, sentenceNouns, sentenceVerbs, sentencePrepositions};
 		int[]typeIndex = {0, 1, 2, 3, 0, 1};
 		StringBuilder mySentence = new StringBuilder();
 		String str;
 		Random randGen = new Random();
-		int randNum; 
+		int randNum;
 		for (int i=0; i<6; i++) {
 			int a = typeIndex[i];
 			randNum = randGen.nextInt(0,sentenceType[a].length);
@@ -76,5 +38,33 @@ public class RandomSentenceGenerator {
 		}
 		mySentence.deleteCharAt(mySentence.length()-1).append(". ");
 		return mySentence;
+	}
+	
+	public static void main(String[] args) {
+		Scanner scnr = new Scanner(System.in);
+		StringBuilder allSentences = new StringBuilder(); 
+		String exitString = "";
+		
+		String[] sentenceArticles = {"a", "the"};
+		String[] sentenceNouns = {"dog", "cat", "panda", "sloth", "koala", "horse", "chihuahua"};
+		String[] sentenceVerbs = {"jumped", "skipped", "leaped", "stared"};
+		String[] sentencePrepositions = {"at", "near", "above", "toward", "over"};
+		
+		System.out.println("How many random sentences do you want?");
+		int input = scnr.nextInt();
+		
+		while(!exitString.equals("exit")) {
+			if (input > 25 || input < 1) {
+				System.out.println("Please choose a number between 1 and 25");
+				input = scnr.nextInt();
+			} else {
+				for (int i=0; i<input; i++) {
+					StringBuilder sentence = generateSentence(sentenceArticles, sentenceNouns, sentenceVerbs, sentencePrepositions);
+					allSentences.append(sentence);
+				}
+				exitString = "exit";
+			}
+		}
+		System.out.println(allSentences);
 	}
 }
