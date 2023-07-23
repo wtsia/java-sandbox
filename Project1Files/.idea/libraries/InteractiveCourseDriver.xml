@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="InteractiveCourseDriver">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/InteractiveCourseDriver.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
