@@ -1,9 +1,7 @@
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int[] merged = new int[m + n];
-        int i = 0;
-        int j = 0;
-        int k = 0;
+        int i = 0, j = 0, k = 0;
         while (k != (m + n)) {
             if (i == m || j == n || nums1[i] == 0 | nums2[j] == 0) {
                 if (i == m || nums1[i] == 0) {
@@ -26,7 +24,10 @@ class Solution {
             }
         }
         printArray(merged);
-        nums1 = merged;
+        
+        for (i = 0; i < m; i++) {
+            nums1[i] = merged[i];
+        }
     }
     
     // Helper method to print array
